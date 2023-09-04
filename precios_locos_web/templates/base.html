@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=320, initial-scale=1.0, user-scalable=no">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Boton flotante inicio -->
+    <script type="text/javascript" src="/static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/floating-wpp.min.js"></script>
+    <link rel="stylesheet" href="/static/css/floating-wpp.min.css">
+    <!-- Boton flotante final -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='precios_locos_icon.png') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://api.whatsapp.com/send?text={{ mensaje_whatsapp }}&phone={{ telefono_link }}">
+                <div class="collapse navbar-collapse justify-content-between">
+                    <div class="navbar-nav" style="display:table;">
+                        <span style="display: table-cell; vertical-align: middle;">
+                            <img style="margin-right: 10px;" src="/static/whatsapp_logo.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                            <span>{{ telefono }}</span>
+                        </span>
+                    </div>
+                    <div class="navbar-nav" style="display:table;">
+                        <span style="display: table-cell; vertical-align: middle;">
+                            <img style="margin-left: 30px; margin-right: 10px;" src="/static/precios_locos_icon.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                            <span>{{ bienvenida }}</span>
+                        </span>
+                    </div>
+                    <div class="navbar-nav" style="display:table;">
+                        <span style="display: table-cell; vertical-align: middle;">
+                            <img style="margin-left: 30px; margin-right: 10px;" src="/static/mercadopago_logo.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                            <span>{{ medios_de_pago }}</span> 
+                        </span>
+                    </div>
+                    <div class="navbar-nav" style="display:table;">
+                        <span style="display: table-cell; vertical-align: middle;">
+                            <img style="margin-left: 30px; margin-right: 10px;" src="/static/envios_logo.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top"> 
+                            <span>{{ envios }}</span>
+                        </span>
+                    </div>
+                </div>           
+            </a>
+        </div>
+    </nav>
+    <!--<nav class="navbar navbar-expand-lg fixed-bottom bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ lista_de_precios }}">
+                <div class="collapse navbar-collapse justify-content-between">
+                    <div class="navbar-nav" style="display:table;">
+                        <span style="display: table-cell; vertical-align: middle;">
+                            <img style="margin-left: 30px; margin-right: 10px;" src="/static/google_sheets_logo.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top"> 
+                            <span>{{ precios_comentarios }}</span>
+                        </span>
+                    </div>
+                </div>           
+            </a>
+        </div>
+    </nav>-->
+    <div class="container text-center">
+        <div id="row_externa" class="row">
+          <div class="col">
+            <p id="texto" style="margin-top: 10px">{{ mensaje1 }}</p>
+            <a id="texto" href="https://api.whatsapp.com/send?text={{ mensaje_whatsapp }}&phone={{ telefono_link }}"> {{ mensaje2 }} <p><img style="margin-right: 10px;" src="/static/whatsapp_logo.png" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">{{ telefono }}</p></a>
+            <p id="texto">{{ envio }}</p>
+          </div>
+        </div>
+        {% block publicaciones %}{% endblock %}
+      </div>
+      <div class="row">
+    <div>
+        {% block columnas %}{% endblock %}
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+<box>
+    <div id="myDiv1"></div>
+</box>
+</body>
+<!-- Boton flotante inicio -->
+<script type="text/javascript">
+    $(function () {
+        $('#myDiv1').floatingWhatsApp({
+            phone: '{{ telefono_link }}',
+            showPopup: 'True',
+            popupMessage: 'Hablá con un representante via WhatsApp, mandanos tu mensaje!',
+            headerTitle: 'Precios Locos',
+            message: '{{ mensaje_whatsapp }}',
+            position: 'right'
+        });
+    });
+</script>
+<!-- Boton flotante final -->
+</html>
