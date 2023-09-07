@@ -41,3 +41,18 @@ services:
     expose:
       - "8000"
     restart: always
+
+  x_api:
+    image: x_api
+    container_name: x_api
+    build:
+      context: ./x_api
+    #volumes:
+    #  - ./x_api:/usr/share/nginx/html:ro
+    depends_on:
+      - nginx_proxy
+      - db
+      - precios_locos_web
+    expose:
+      - "8001"
+    restart: always

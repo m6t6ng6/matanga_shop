@@ -1,0 +1,43 @@
+version: "3"
+services:
+  nginx_proxy:
+    image: "jc21/nginx-proxy-manager:latest"
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    depends_on:
+      - db
+    volumes:
+      - ./config.json:/app/config/production.json
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+      - ./_hsts.conf:/app/templates/_hsts.conf:ro
+    restart: always
+
+  db:
+    image: 'yobasystems/alpine-mariadb:latest'
+    container_name: nginx_db
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    restart: always
+
+  precios_locos_web:
+    image: precios_locos_web
+    container_name: precios_locos_web
+    build:
+      context: ./precios_locos_web
+    volumes:
+      - ./precios_locos_web:/usr/share/nginx/html:ro
+    depends_on:
+      - nginx_proxy
+      - db
+    expose:
+      - "8000"
+    restart: always

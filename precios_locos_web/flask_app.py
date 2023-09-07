@@ -31,33 +31,6 @@ def home():
         lista_de_precios=lista_de_precios,
         mensaje_whatsapp=mensaje_whatsapp
         )
-
-"""
-@app.route("/post")
-def post_a_tweet():
-    api_key = "PZWOlDaFJuBRlHjExc0TF8NWp"
-    api_key_secret = "8vsqp60muuoz11KWosWTs1inyG5lDm6XOIRIMMfF26WRRpAnVC"
-    access_token = "1699279935506894848-tvM9Z8IEs4dGCdAS7fQGsajvK4uoPn"
-    access_token_secret = "eTXd50Jjlmf9cDRjy8UgOz0x5zhy1VEBPoXb3ADP0FCof"
-
-    # Authenticate to Twitter
-    auth = tweepy.OAuthHandler(api_key, api_key_secret)
-    auth.set_access_token(access_token, access_token_secret)
-
-    # Create API object
-    api = tweepy.API(auth)
-
-    try:
-        api.verify_credentials()
-        print("Authentication OK")
-    except:
-        print("Error during authentication")
-
-    # Create a tweet
-    api.update_status("Test 1")
-
-    return render_template("productos.html")
-"""
     
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8000)
