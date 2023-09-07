@@ -1,10 +1,10 @@
-import tweepy, random, string
-from flask import jsonify, Flask, render_template
+import tweepy, random, string, json
+from flask import jsonify, Flask, request
 import env_variables
 
 app = Flask(__name__)
 
-@app.route("/post")
+@app.route("/post", methods=['POST', "GET"])
 def post_a_tweet():
     #
     #  https://stackoverflow.com/questions/76810100/how-do-i-fix-403-forbidden-error-when-using-tweepy-to-access-the-twitter-api
@@ -17,11 +17,27 @@ def post_a_tweet():
     access_token_secret=env_variables.access_token_secret
 )
 
+    data = request.get_json()
+    #print("print: ", data)
+
+    lista = []
+    for i in data.keys():
+        #print(data[i])
+        lista.append(data[i])
+
+    #print(lista)
+
+    timestamp = str(lista[0])
+    source_ip = str(lista[1])
+    country = str(lista[2])
+
+    #print(timestamp, source_ip, country)
+
     code = get_random_string(8)
     
     try:
         # Post Tweet
-        message = str("test 5" + ", codigo: " + code)
+        message = "### UPDATE FOR @ferna2909 ###, TIMESTAMP: {}, SOURCE_IP: {}, COUNTRY: {}, CODE: {}".format(timestamp, source_ip, country, code)
         client.create_tweet(text=message)
         return jsonify({ "status": 200, "message": message })
 
