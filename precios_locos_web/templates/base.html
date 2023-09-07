@@ -14,6 +14,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
+    <!--
+    <script>
+        $.getJSON("https://api.country.is/", function (data) {
+            console.log(data);
+            $('#IP_Address').append("Your IP: " + data.ip);
+            $('#Country').append("Your Country: " + data.country);
+        });
+    </script>
+    -->
+    <div id="IP_Address"></div>
+    <div id="Country"></div>
+    <div id="City"></div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="https://api.whatsapp.com/send?text={{ mensaje_whatsapp }}&phone={{ telefono_link }}">
