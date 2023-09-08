@@ -14,18 +14,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-    <!--
-    <script>
+    <script type="text/javascript">
+        var new_data;
+
         $.getJSON("https://api.country.is/", function (data) {
             console.log(data);
-            $('#IP_Address').append("Your IP: " + data.ip);
-            $('#Country').append("Your Country: " + data.country);
+            new_data = {
+                timestamp: new Date(),
+                source_ip: data.ip,
+                country: data.country
+            };
+
+            console.log(new_data);
+
+            $('#IP_Address').append(data.ip);
+            $('#Country').append(data.country);
+
+            $.ajax({
+            //url: "http://192.168.68.79:8001/post",    // TESTING
+            url: "http://x_api:8001/post",    // CONTAINER NAME
+            type: "POST",
+            data: JSON.stringify(new_data),
+            //data: new_data,
+            //processData: false,
+            success: function(success_data){
+                console.log(success_data);
+                },
+            error: function(e) {
+               console.log(e);
+            },
+            dataType: "json",
+            contentType: "application/json; charset=UTF-8",
         });
+        });
+        
     </script>
-    -->
+    <!--
     <div id="IP_Address"></div>
     <div id="Country"></div>
     <div id="City"></div>
+    -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="https://api.whatsapp.com/send?text={{ mensaje_whatsapp }}&phone={{ telefono_link }}">

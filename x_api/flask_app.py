@@ -1,8 +1,10 @@
 import tweepy, random, string, json
 from flask import jsonify, Flask, request
 import env_variables
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/post", methods=['POST', "GET"])
 def post_a_tweet():
@@ -18,7 +20,7 @@ def post_a_tweet():
 )
 
     data = request.get_json()
-    #print("print: ", data)
+    print("print: ", data)
 
     lista = []
     for i in data.keys():
