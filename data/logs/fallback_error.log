@@ -9,3 +9,4 @@
 2023/09/04 17:15:59 [warn] 282#282: 512 worker_connections are not enough, reusing connections
 2023/09/04 17:15:59 [alert] 282#282: 512 worker_connections are not enough
 2023/09/04 17:15:59 [error] 283#283: *1541 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "matanga.tplinkdns.com", referrer: "http://matanga.tplinkdns.com/"
+2023/09/08 06:45:51 [error] 178#178: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 186.123.99.126, server: nginxproxymanager, request: "GET /api/ HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "matanga.tplinkdns.com:81", referrer: "http://matanga.tplinkdns.com:81/nginx/proxy"

@@ -15,6 +15,8 @@ services:
       - ./letsencrypt:/etc/letsencrypt
       - ./_hsts.conf:/app/templates/_hsts.conf:ro
     restart: always
+    networks:
+        - app-network
 
   db:
     image: 'yobasystems/alpine-mariadb:latest'
@@ -27,6 +29,8 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql
     restart: always
+    networks:
+        - app-network
 
   precios_locos_web:
     image: precios_locos_web
@@ -41,14 +45,16 @@ services:
     expose:
       - "8000"
     restart: always
+    networks:
+        - app-network
 
   x_api:
     image: x_api
     container_name: x_api
     build:
       context: ./x_api
-    #volumes:
-    #  - ./x_api:/usr/share/nginx/html:ro
+    volumes:
+      - ./x_api:/usr/share/nginx/html:ro
     depends_on:
       - nginx_proxy
       - db
@@ -56,3 +62,9 @@ services:
     expose:
       - "8001"
     restart: always
+    networks:
+        - app-network
+
+networks:
+   app-network:
+      driver: bridge

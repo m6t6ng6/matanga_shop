@@ -103,3 +103,4 @@
 [08/Sep/2023:02:03:02 +0000] 400 - GET http 186.123.99.126 "/" [Client 162.142.125.222] [Length 252] [Gzip -] "-" "-"
 [08/Sep/2023:02:03:02 +0000] 400 - GET http 186.123.99.126 "/" [Client 162.142.125.222] [Length 252] [Gzip -] "Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)" "-"
 [08/Sep/2023:02:03:03 +0000] 400 - - http localhost "-" [Client 162.142.125.222] [Length 154] [Gzip -] "-" "-"
+[08/Sep/2023:06:04:27 +0000] 400 - - http localhost "-" [Client 185.233.19.225] [Length 154] [Gzip -] "-" "-"
