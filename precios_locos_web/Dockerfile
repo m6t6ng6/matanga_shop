@@ -13,7 +13,7 @@ COPY    static/*.svg    /opt/source-code/static/
 
 COPY    requirements.txt /tmp/requirements.txt
 
-RUN     pip3 install --no-cache -r /tmp/requirements.txt
+RUN     pip3 install --no-cache --break-system-packages -r /tmp/requirements.txt
 
 ENV FLASK_APP=/opt/source-code/flask_app.py
 ENV FLASK_ENV=development
