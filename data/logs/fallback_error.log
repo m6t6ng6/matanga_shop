@@ -1,0 +1,6 @@
+2024/08/25 03:42:42 [warn] 183#183: 512 worker_connections are not enough, reusing connections
+2024/08/25 03:42:42 [alert] 183#183: 512 worker_connections are not enough
+2024/08/25 03:42:42 [error] 185#185: *1002 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "raspi53.matanga.it", referrer: "http://raspi53.matanga.it/"
+2024/08/25 03:44:09 [warn] 183#183: 512 worker_connections are not enough, reusing connections
+2024/08/25 03:44:09 [alert] 183#183: 512 worker_connections are not enough
+2024/08/25 03:44:09 [error] 185#185: *2030 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "192.168.68.97", referrer: "http://192.168.68.97/"

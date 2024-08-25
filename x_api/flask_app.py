@@ -6,6 +6,46 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+#==========================
+
+@app.route("/backup_message", methods=['POST', "GET"])
+def post_a_tweet_for_backup():
+    client = tweepy.Client(
+        consumer_key=env_variables.api_key,
+        consumer_secret=env_variables.api_key_secret,
+        access_token=env_variables.access_token,
+        access_token_secret=env_variables.access_token_secret
+    )
+
+    data = request.get_json()
+    print("print: ", data)
+
+    lista = []
+    for i in data.keys():
+        #print(data[i])
+        lista.append(data[i])
+
+    #print(lista)
+
+    timestamp = str(lista[0])
+    target_system = str(lista[1])
+    cli_message = str(lista[2])
+
+    #print(timestamp, source_ip, country)
+
+    code = get_random_string(8)
+    
+    try:
+        # Post Tweet
+        message = "### UPDATE FOR @ferna2909 ###, TIMESTAMP: {}, TARGET SYSTEM: {}, MESSAGE: {}, CODE: {}".format(timestamp, target_system, cli_message, code)
+        client.create_tweet(text=message)
+        return jsonify({ "status": 200, "message": message })
+
+    except Exception as error: 
+        return jsonify({ "status": 400, "error": error })
+
+#==========================
+
 @app.route("/post", methods=['POST', "GET"])
 def post_a_tweet():
     #
@@ -13,11 +53,11 @@ def post_a_tweet():
     #
     # Authenticate to Twitter
     client = tweepy.Client(
-    consumer_key=env_variables.api_key,
-    consumer_secret=env_variables.api_key_secret,
-    access_token=env_variables.access_token,
-    access_token_secret=env_variables.access_token_secret
-)
+        consumer_key=env_variables.api_key,
+        consumer_secret=env_variables.api_key_secret,
+        access_token=env_variables.access_token,
+        access_token_secret=env_variables.access_token_secret
+    )
 
     data = request.get_json()
     print("print: ", data)
@@ -45,6 +85,8 @@ def post_a_tweet():
 
     except Exception as error: 
         return jsonify({ "status": 400, "error": error })
+
+#==========================
 
 def get_random_string(length):
     # With combination of lower and upper case

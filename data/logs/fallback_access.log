@@ -1,2 +1,5 @@
 [04/Aug/2024:18:49:21 +0000] 400 - - http localhost "-" [Client 13.83.40.178] [Length 154] [Gzip -] "-" "-"
 [04/Aug/2024:18:57:07 +0000] 400 - GET http 181.116.222.80 "/" [Client 213.32.122.82] [Length 654] [Gzip -] "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36" "-"
+[25/Aug/2024:03:42:42 +0000] 200 - GET http raspi53.matanga.it "/" [Client 192.168.68.77] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" "-"
+[25/Aug/2024:03:43:30 +0000] 304 - GET http raspi53.matanga.it "/" [Client 192.168.68.77] [Length 0] [Gzip -] "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" "-"
+[25/Aug/2024:03:44:09 +0000] 200 - GET http 192.168.68.97 "/" [Client 192.168.68.77] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" "-"
